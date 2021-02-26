@@ -1,7 +1,8 @@
 import React from "react";
 
 const Todo = ({ text, todo, todos, setTodos }) => {
-  // Events
+  
+    // Events
   const deleteHandler = (e) => {
       setTodos(todos.filter(el => el.id !== todo.id)) // filter out the id-matching todo item
   };
@@ -10,7 +11,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
     setTodos(todos.map((item) => {
         if(item.id === todo.id) {
             return {
-                ...item, completed = !item.completed // all other attributes of item
+                ...item, completed: !item.completed // all other attributes of item
             }
         }
         return item;
@@ -20,7 +21,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
   return (
     <div className="todo">
       <li className="todo-item">{text}</li>
-      <button className="complete-btn">
+      <button className="complete-btn" onClick={completeHandler}>
         <i className="fas fa-check"></i>
       </button>
       <button className="trash-btn" onClick={deleteHandler}>
